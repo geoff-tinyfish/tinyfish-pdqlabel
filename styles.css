@@ -259,10 +259,10 @@ button.secondary:hover {
 }
 
 .tiny-fish-mark {
-  left: 7.2%;
-  top: 4.2%;
-  width: 28.5%;
-  height: 17.8%;
+  left: 4.8%;
+  top: 2.4%;
+  width: 42.8%;
+  height: 26.7%;
 }
 
 .pdq-mark {
@@ -284,13 +284,13 @@ button.secondary:hover {
 }
 
 .from-copy {
-  left: 47%;
+  left: 50%;
   right: 5.8%;
   top: 5.3%;
   display: grid;
   gap: 2px;
   overflow: hidden;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.1;
   font-weight: 900;
 }
@@ -298,8 +298,8 @@ button.secondary:hover {
 .to-copy {
   left: 6.6%;
   right: 5.5%;
-  top: 23%;
-  max-height: 30.6%;
+  top: 29%;
+  max-height: 24.6%;
   overflow: hidden;
   --destination-size: 24px;
   --destination-gap: 7px;
