@@ -1,0 +1,440 @@
+:root {
+  color: #111;
+  background: #f4f4f1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-synthesis: none;
+  text-rendering: geometricPrecision;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: minmax(320px, 440px) minmax(360px, 1fr);
+  gap: 32px;
+  min-height: 100vh;
+  padding: 32px;
+}
+
+.form-panel,
+.preview-panel {
+  align-self: start;
+}
+
+.panel-heading {
+  margin-bottom: 22px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+p {
+  max-width: 34rem;
+  margin: 0;
+  color: #4f4f4a;
+  line-height: 1.45;
+}
+
+form {
+  display: grid;
+  gap: 16px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  font-weight: 700;
+}
+
+label span {
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 2px solid #c8c8c0;
+  border-radius: 6px;
+  background: #fff;
+  color: #111;
+  padding: 12px 13px;
+  outline: none;
+}
+
+textarea {
+  min-height: 128px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #111;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-grid.single {
+  grid-template-columns: minmax(180px, 1fr);
+}
+
+.from-section,
+.boxes-section {
+  display: grid;
+  gap: 12px;
+}
+
+.from-editor {
+  display: grid;
+  gap: 12px;
+  border: 2px solid #d4d4cc;
+  border-radius: 6px;
+  background: #fff;
+  padding: 12px;
+}
+
+.from-editor[hidden] {
+  display: none;
+}
+
+.from-editor button {
+  justify-self: end;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.section-heading span,
+.box-title {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.section-heading button {
+  min-height: 38px;
+  padding: 0 12px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.box-list {
+  display: grid;
+  gap: 12px;
+}
+
+.box-editor {
+  display: grid;
+  gap: 9px;
+  border: 2px solid #d4d4cc;
+  border-radius: 6px;
+  background: #fff;
+  padding: 12px;
+}
+
+.box-editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.remove-box {
+  min-height: 32px;
+  border-color: #b8b8b0;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.box-editor textarea {
+  min-height: 112px;
+  border-color: #c8c8c0;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+button {
+  min-height: 46px;
+  border: 2px solid #111;
+  border-radius: 6px;
+  background: #111;
+  color: #fff;
+  padding: 0 18px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2c2c2c;
+}
+
+button.secondary {
+  background: #fff;
+  color: #111;
+}
+
+button.secondary:hover {
+  background: #ecece7;
+}
+
+.preview-panel {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+}
+
+.preview-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(100%, 432px);
+  font-size: 14px;
+}
+
+#pageSummary {
+  color: #575750;
+}
+
+.label {
+  position: relative;
+  width: 4in;
+  height: 6in;
+  overflow: hidden;
+  background: #fff;
+  color: #000;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.label::before {
+  content: none;
+}
+
+.label-content {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+}
+
+.tiny-fish-mark,
+.pdq-mark {
+  position: absolute;
+  display: block;
+  object-fit: contain;
+}
+
+.tiny-fish-mark {
+  left: 7.2%;
+  top: 4.2%;
+  width: 28.5%;
+  height: 17.8%;
+}
+
+.pdq-mark {
+  left: 6%;
+  bottom: 5.7%;
+  width: 30%;
+  height: 9.3%;
+}
+
+.from-copy,
+.to-copy,
+.contents-copy,
+.box-counter {
+  position: absolute;
+  margin: 0;
+  color: #000;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: none;
+}
+
+.from-copy {
+  left: 47%;
+  right: 5.8%;
+  top: 5.3%;
+  display: grid;
+  gap: 2px;
+  overflow: hidden;
+  font-size: 18px;
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+.to-copy {
+  left: 6.6%;
+  right: 5.5%;
+  top: 23%;
+  max-height: 30.6%;
+  overflow: hidden;
+  --destination-size: 24px;
+  --destination-gap: 7px;
+  --attention-gap: 11px;
+}
+
+.field-kicker {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.destination-line {
+  display: block;
+  margin-top: var(--destination-gap);
+  font-size: var(--destination-size);
+  line-height: 1.06;
+  font-weight: 900;
+  overflow-wrap: anywhere;
+  text-transform: uppercase;
+}
+
+.destination-line.first {
+  margin-top: 0;
+}
+
+.destination-line.attention {
+  margin-top: var(--attention-gap);
+}
+
+.contents-copy {
+  left: 6.6%;
+  right: 6%;
+  top: 54.1%;
+  max-height: 20.4%;
+  overflow: hidden;
+  --contents-size: 18px;
+  --contents-kicker-size: 15px;
+  --contents-gap: 5px;
+}
+
+.contents-copy .field-kicker {
+  margin-bottom: var(--contents-gap);
+  font-size: var(--contents-kicker-size);
+}
+
+.contents-text {
+  display: block;
+  white-space: pre-wrap;
+  font-size: var(--contents-size);
+  line-height: 1.12;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.box-counter {
+  right: 7%;
+  bottom: 9.6%;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+#printStack {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  display: block;
+  visibility: hidden;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .section-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .preview-panel {
+    justify-items: start;
+  }
+
+  .preview-toolbar {
+    width: min(100%, 4in);
+  }
+
+  .label {
+    width: min(100%, 4in);
+    height: auto;
+    aspect-ratio: 4 / 6;
+  }
+}
+
+@page {
+  size: 4in 6in;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    width: 4in;
+    min-height: 6in;
+    margin: 0;
+    background: #fff;
+  }
+
+  .app-shell {
+    display: none;
+  }
+
+  #printStack {
+    display: block;
+    position: static;
+    visibility: visible;
+  }
+
+  #printStack .label {
+    width: 4in;
+    height: 6in;
+    margin: 0;
+    box-shadow: none;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  #printStack .label:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+}
