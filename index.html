@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PDQ Delivery Label Maker</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="form-panel" aria-label="Label details">
+        <div class="panel-heading">
+          <h1>PDQ Label Maker</h1>
+          <p>Fill in the delivery details, then print or save as a 4 x 6 PDF.</p>
+        </div>
+
+        <form id="labelForm">
+          <section class="from-section" aria-label="From address">
+            <label>
+              <span>From</span>
+              <select id="fromAddressSelect"></select>
+            </label>
+
+            <div id="fromEditor" class="from-editor" hidden>
+              <label>
+                <span>From Name</span>
+                <input id="fromName" autocomplete="organization" value="Tiny Fish Printing">
+              </label>
+
+              <label>
+                <span>From Address Line 1</span>
+                <input id="fromAddress1" autocomplete="address-line1" value="601 Oak St.">
+              </label>
+
+              <label>
+                <span>From Address Line 2</span>
+                <input id="fromAddress2" autocomplete="address-line2">
+              </label>
+
+              <label>
+                <span>From City, State and Zip Code</span>
+                <input id="fromCityStateZip" autocomplete="address-level2" value="Rochester, NY 14608">
+              </label>
+
+              <button type="button" id="saveFromButton" class="secondary">Save From Address</button>
+            </div>
+          </section>
+
+          <label>
+            <span>Company Name</span>
+            <input id="company" autocomplete="organization" value="TINY FISH PRINTING">
+          </label>
+
+          <label>
+            <span>Attention</span>
+            <input id="attention" autocomplete="name" value="EMMA">
+          </label>
+
+          <label>
+            <span>Address Line 1</span>
+            <input id="address" autocomplete="street-address" value="139 GARSON AVE">
+          </label>
+
+          <label>
+            <span>Address Line 2</span>
+            <input id="address2" autocomplete="address-line2">
+          </label>
+
+          <label>
+            <span>City, State and Zip Code</span>
+            <input id="cityStateZip" autocomplete="address-level2" value="ROCHESTER, NY 14609">
+          </label>
+
+          <section class="boxes-section" aria-label="Delivery boxes">
+            <div class="section-heading">
+              <span>Delivery Boxes</span>
+              <button type="button" id="addBoxButton" class="secondary">Add Box to Delivery</button>
+            </div>
+            <div id="boxList" class="box-list"></div>
+          </section>
+
+          <div class="form-grid single">
+            <label>
+              <span>Preview Box</span>
+              <select id="previewBox"></select>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button type="button" id="clearButton" class="secondary">Clear</button>
+            <button type="button" id="printButton">Print / Save PDF</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="preview-panel" aria-label="Label preview">
+        <div class="preview-toolbar">
+          <strong>4 x 6 Preview</strong>
+          <span id="pageSummary">2 labels</span>
+        </div>
+        <div id="previewLabel" class="label" aria-label="Generated label preview"></div>
+      </section>
+    </main>
+
+    <div id="printStack" aria-hidden="true"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
