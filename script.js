@@ -292,12 +292,12 @@ function fitDestinationBlock(block) {
   block.style.setProperty("--destination-gap", "7px");
   block.style.setProperty("--attention-gap", "11px");
 
-  fitBlock(block, 6, 24, (size) => {
+  fitBlock(block, 18, 24, (size) => {
     const scale = size / 24;
     block.style.setProperty("--destination-size", `${size}px`);
     block.style.setProperty("--destination-gap", `${Math.max(2, 7 * scale)}px`);
     block.style.setProperty("--attention-gap", `${Math.max(3, 11 * scale)}px`);
-  });
+  }, blockFitsHeight);
 }
 
 function fitContentsBlock(block) {
@@ -315,7 +315,7 @@ function fitContentsBlock(block) {
   });
 }
 
-function fitBlock(block, minSize, maxSize, applySize) {
+function fitBlock(block, minSize, maxSize, applySize, fits = blockFits) {
   let low = minSize;
   let high = maxSize;
   let best = minSize;
@@ -324,7 +324,7 @@ function fitBlock(block, minSize, maxSize, applySize) {
     const size = (low + high) / 2;
     applySize(size);
 
-    if (blockFits(block)) {
+    if (fits(block)) {
       best = size;
       low = size;
     } else {
@@ -337,6 +337,10 @@ function fitBlock(block, minSize, maxSize, applySize) {
 
 function blockFits(block) {
   return block.scrollHeight <= block.clientHeight + 1 && block.scrollWidth <= block.clientWidth + 1;
+}
+
+function blockFitsHeight(block) {
+  return block.scrollHeight <= block.clientHeight + 1;
 }
 
 function addBox() {
