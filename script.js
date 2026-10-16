@@ -38,6 +38,7 @@ const fields = {
 };
 
 let fromAddresses = loadFromAddresses();
+let labelRenderVersion = 0;
 let boxes = [
   {
     contents: "12 (L) Athletic Grey Mock Neck\nPO#47766 - Pioneer Millworks\nprint samples for Vicky",
@@ -257,6 +258,7 @@ function syncPreviewOptions(data) {
 }
 
 function renderLabels() {
+  const renderVersion = ++labelRenderVersion;
   syncBoxesFromEditors();
 
   const data = getFormData();
@@ -276,6 +278,24 @@ function renderLabels() {
 
   pageSummary.textContent = `${data.boxes.length} ${data.boxes.length === 1 ? "label" : "labels"}`;
   fitAllLabelText();
+  fitLabelsAfterFontsLoad(renderVersion);
+}
+
+async function fitLabelsAfterFontsLoad(renderVersion) {
+  if (!document.fonts) return;
+
+  await document.fonts.ready;
+  if (renderVersion !== labelRenderVersion) return;
+
+  requestAnimationFrame(() => {
+    if (renderVersion === labelRenderVersion) {
+      fitAllLabelText();
+    }
+  });
+}
+
+function nextFrame() {
+  return new Promise((resolve) => requestAnimationFrame(resolve));
 }
 
 function fitAllLabelText() {
@@ -401,8 +421,14 @@ boxList.addEventListener("click", (event) => {
 
   removeBox(Number.parseInt(button.dataset.removeIndex, 10));
 });
-printButton.addEventListener("click", () => {
+printButton.addEventListener("click", async () => {
   renderLabels();
+  if (document.fonts) {
+    await document.fonts.ready;
+  }
+  await nextFrame();
+  fitAllLabelText();
+  await nextFrame();
   window.print();
 });
 
